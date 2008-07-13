@@ -1,0 +1,103 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E0249498-3585-4D40-91B6-81B7C5C5F608}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Winterdom.BizTalk.PipelineTesting</RootNamespace>
+    <AssemblyName>Winterdom.BizTalk.PipelineTesting</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>PipelineTesting.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <DocumentationFile>bin\Debug\Winterdom.BizTalk.PipelineTesting.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Winterdom.BizTalk.PipelineTesting.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.BizTalk.Bam.EventObservation, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft BizTalk Server 2006\Tracking\Microsoft.BizTalk.Bam.EventObservation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.DefaultPipelines, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft BizTalk Server 2006\Microsoft.BizTalk.DefaultPipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.Pipeline, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft BizTalk Server 2006\Microsoft.BizTalk.Pipeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.Pipeline.Components, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft BizTalk Server 2006\Pipeline Components\Microsoft.BizTalk.Pipeline.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.XLANGs.BaseTypes, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft BizTalk Server 2006\Microsoft.XLANGs.BaseTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="PipelineObjects, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>c:\Program Files\Microsoft BizTalk Server 2006\SDK\Utilities\PipelineTools\PipelineObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.Component.Utilities, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>false</SpecificVersion>
+      <HintPath>c:\windows\assembly\GAC\Microsoft.BizTalk.Component.Utilities\3.0.1.0__31bf3856ad364e35\Microsoft.BizTalk.Component.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasePipelineWrapper.cs" />
+    <Compile Include="NullEventStream.cs" />
+    <Compile Include="Simple\Assembler.cs" />
+    <Compile Include="Simple\FFDisassembler.cs" />
+    <Compile Include="Simple\XmlDisassembler.cs" />
+    <Compile Include="Simple\Disassembler.cs" />
+    <Compile Include="Simple\FFAssembler.cs" />
+    <Compile Include="Simple\XmlAssembler.cs" />
+    <Compile Include="Simple\ReceivePipelineBuilder.cs" />
+    <Compile Include="Simple\SendPipelineBuilder.cs" />
+    <Compile Include="Simple\XmlPipelines.cs" />
+    <Compile Include="Simple\Pipelines.cs" />
+    <Compile Include="PipelineContext.cs" />
+    <Compile Include="DocSpecLoader.cs" />
+    <Compile Include="MessageCollection.cs" />
+    <Compile Include="PipelineStage.cs" />
+    <Compile Include="SendPipelineWrapper.cs" />
+    <Compile Include="ReceivePipelineWrapper.cs" />
+    <Compile Include="PipelineFactory.cs" />
+    <Compile Include="MessageHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PipelineTesting.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

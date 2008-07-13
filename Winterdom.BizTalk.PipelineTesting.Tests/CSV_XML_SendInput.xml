@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ns0:CSV xmlns:ns0="http://SampleSchemas.Schema3_FF">
+   <ns0:Record>
+      <ns0:Field1>Field1_0</ns0:Field1>
+      <ns0:Field2>Field2_0</ns0:Field2>
+      <ns0:Field3>Field3_0</ns0:Field3>
+   </ns0:Record>
+   <ns0:Record>
+      <ns0:Field1>Field1_1</ns0:Field1>
+      <ns0:Field2>Field2_2</ns0:Field2>
+      <ns0:Field3>Field3_3</ns0:Field3>
+   </ns0:Record>
+</ns0:CSV>
