@@ -133,7 +133,8 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
       /// using the simple method and a bunch of Streams
       /// </summary>
       [Test]
-      public void CanCreateMultipartFromStreamSimple() {
+      public void CanCreateMultipartFromStreamSimple()
+      {
          IBaseMessage message = MessageHelper.Create(
             DocLoader.LoadStream("Env_Batch_Input.xml"),
             DocLoader.LoadStream("CSV_FF_RecvInput.txt")
@@ -144,11 +145,22 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
       /// Test we can consume an entire message stream
       /// </summary>
       [Test]
-      public void CanConsumeStream() {
+      public void CanConsumeStream()
+      {
          string body = "<body>Some message content</body>";
          IBaseMessage message = MessageHelper.CreateFromString(body);
          MessageHelper.ConsumeStream(message);
          Assert.AreEqual(message.BodyPart.Data.Length, message.BodyPart.Data.Position);
+      }
+      /// <summary>
+      /// Test we can read back an entire message stream
+      /// </summary>
+      [Test]
+      public void CanReadStream()
+      {
+         string body = "<body>Some message content</body>";
+         IBaseMessage message = MessageHelper.CreateFromString(body);
+         Assert.AreEqual(body, MessageHelper.ReadString(message));
       }
    } // class MessageHelperTests
 

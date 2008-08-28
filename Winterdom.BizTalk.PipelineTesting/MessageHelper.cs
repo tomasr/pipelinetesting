@@ -157,6 +157,8 @@ namespace Winterdom.BizTalk.PipelineTesting
       /// <param name="message">Message to consume</param>
       public static void ConsumeStream(IBaseMessage message) 
       {
+         if ( message == null )
+            throw new ArgumentNullException("message");
          ConsumeStream(message.BodyPart);
       }
       /// <summary>
@@ -165,7 +167,45 @@ namespace Winterdom.BizTalk.PipelineTesting
       /// <param name="part">Part to consume</param>
       public static void ConsumeStream(IBaseMessagePart part)
       {
+         if ( part == null )
+            throw new ArgumentNullException("part");
          ConsumeStream(part.Data);
+      }
+      /// <summary>
+      /// Helper method to read back a stream as a string
+      /// </summary>
+      /// <param name="stream">Stream to consume</param>
+      public static string ReadString(Stream stream, Encoding encoding)
+      {
+         if ( stream == null )
+            throw new ArgumentNullException("stream");
+         if ( encoding == null )
+            throw new ArgumentNullException("encoding");
+         using ( StreamReader reader = new StreamReader(stream, encoding) )
+            return reader.ReadToEnd(); 
+      }
+      /// <summary>
+      /// Helper method to read back a stream as a string
+      /// </summary>
+      /// <param name="message">Message to consume</param>
+      public static string ReadString(IBaseMessage message)
+      {
+         if ( message == null )
+            throw new ArgumentNullException("message");
+         return ReadString(message.BodyPart);
+      }
+      /// <summary>
+      /// Helper method to read back a stream as a string
+      /// </summary>
+      /// <param name="part">Part to consume</param>
+      public static String ReadString(IBaseMessagePart part)
+      {
+         if ( part == null )
+            throw new ArgumentNullException("part");
+         Encoding enc = Encoding.UTF8;
+         if ( !String.IsNullOrEmpty(part.Charset) )
+            enc = Encoding.GetEncoding(part.Charset);
+         return ReadString(part.Data, enc);
       }
    } // class MessageFactory
 
