@@ -30,7 +30,6 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
    //
    // RESULT: Not a bug. XML Assembler throws a COM Exception
    // (E_FAIL) when trying to read stream if:
-   // - Allow Unrecognized == false
    // - Schema was not found
    [TestFixture]
    public class StreamingTests {
