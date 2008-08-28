@@ -128,6 +128,22 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple
 
          Assert.AreEqual(1, output.Count);
       }
+
+      [Test]
+      public void Receive_WithPromotedProps()
+      {
+         ReceivePipelineWrapper pipeline = Pipelines.Xml.Receive()
+            .WithSpec<Schema2_WPP>();
+
+         IBaseMessage input = MessageHelper.CreateFromStream(
+            DocLoader.LoadStream("SampleDocument.xml")
+            );
+         MessageCollection output = pipeline.Execute(input);
+
+         Property2 prop = new Property2();
+         object value = output[0].Context.Read(prop.QName.Name, prop.QName.Namespace);
+         Assert.AreEqual("Field2_0", value);
+      }
       #endregion // Receive Pipeline Tests
 
    } // class PipelineCreationTests
