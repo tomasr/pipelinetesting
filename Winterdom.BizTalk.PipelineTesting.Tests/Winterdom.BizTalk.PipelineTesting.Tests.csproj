@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Simple\AssemblerTests.cs" />
+    <Compile Include="Simple\StreamingTests.cs" />
     <Compile Include="Simple\DisassemblerTests.cs" />
     <Compile Include="Simple\PipelineUsageTests.cs" />
     <Compile Include="Simple\PipelineCreationTests.cs" />
