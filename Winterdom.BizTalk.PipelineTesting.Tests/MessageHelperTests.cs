@@ -140,6 +140,16 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
          );
          Assert.AreEqual(2, message.PartCount);
       }
+      /// <summary>
+      /// Test we can consume an entire message stream
+      /// </summary>
+      [Test]
+      public void CanConsumeStream() {
+         string body = "<body>Some message content</body>";
+         IBaseMessage message = MessageHelper.CreateFromString(body);
+         MessageHelper.ConsumeStream(message);
+         Assert.AreEqual(message.BodyPart.Data.Length, message.BodyPart.Data.Position);
+      }
    } // class MessageHelperTests
 
 } // namespace Winterdom.BizTalk.PipelineTesting.Tests

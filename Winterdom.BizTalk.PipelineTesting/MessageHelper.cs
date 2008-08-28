@@ -138,6 +138,35 @@ namespace Winterdom.BizTalk.PipelineTesting
          return message;
       }
 
+      /// <summary>
+      /// Helper method to consume a stream
+      /// </summary>
+      /// <param name="stream">Stream to consume</param>
+      public static void ConsumeStream(Stream stream)
+      {
+         if ( stream == null )
+            throw new ArgumentNullException("stream");
+         byte[] buffer = new byte[4096];
+         int read = 0;
+         while ( (read = stream.Read(buffer, 0, buffer.Length)) > 0 )
+            ;
+      }
+      /// <summary>
+      /// Helper method to consume the message body part stream
+      /// </summary>
+      /// <param name="message">Message to consume</param>
+      public static void ConsumeStream(IBaseMessage message) 
+      {
+         ConsumeStream(message.BodyPart);
+      }
+      /// <summary>
+      /// Helper method to consume the part stream
+      /// </summary>
+      /// <param name="part">Part to consume</param>
+      public static void ConsumeStream(IBaseMessagePart part)
+      {
+         ConsumeStream(part.Data);
+      }
    } // class MessageFactory
 
 } // namespace Winterdom.BizTalk.PipelineTesting
