@@ -122,12 +122,30 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
          IDocumentSpec docSpec = null;
 
          docSpec = pipeline.GetKnownDocSpecByName(typeof(Schema1_NPP.Root).AssemblyQualifiedName);
+         Assert.IsNotNull(docSpec);
          docSpec = pipeline.GetKnownDocSpecByName(typeof(Schema1_NPP.Root2).AssemblyQualifiedName);
          Assert.IsNotNull(docSpec);
 
          docSpec = pipeline.GetKnownDocSpecByType("http://SampleSchemas.Schema1_NPP#Root");
          Assert.IsNotNull(docSpec);
          docSpec = pipeline.GetKnownDocSpecByType("http://SampleSchemas.Schema1_NPP#Root2");
+         Assert.IsNotNull(docSpec);
+      }
+
+      /// <summary>
+      /// Tests that we can add a doc spec using its name and not the type
+      /// </summary>
+      [Test]
+      public void CanAddDocSpecByName()
+      {
+         ReceivePipelineWrapper pipeline = PipelineFactory.CreateEmptyReceivePipeline();
+         pipeline.AddDocSpec("SampleSchemas.Schema1_NPP+Root", "SampleSchemas");
+
+         IDocumentSpec docSpec = 
+            pipeline.GetKnownDocSpecByName(typeof(Schema1_NPP.Root).AssemblyQualifiedName);
+         Assert.IsNotNull(docSpec);
+
+         docSpec = pipeline.GetKnownDocSpecByType("http://SampleSchemas.Schema1_NPP#Root");
          Assert.IsNotNull(docSpec);
       }
 

@@ -128,6 +128,20 @@ namespace Winterdom.BizTalk.PipelineTesting.Simple
       /// <summary>
       /// Adds a document specification (schema) to the pipeline
       /// </summary>
+      /// <param name="typeName">The fully qualified (namespace.class) name of 
+      /// the schema</param>
+      /// <param name="assemblyName">The partial or full name of the assembly
+      /// containing the schema</param>
+      /// <returns>This instance</returns>
+      public SendPipelineBuilder WithSpec(string typeName, string assemblyName)
+      {
+         _pipeline.AddDocSpec(typeName, assemblyName);
+         return this;
+      }
+
+      /// <summary>
+      /// Adds a document specification (schema) to the pipeline
+      /// </summary>
       /// <typeparam name="T">The schema type</typeparam>
       /// <returns>This instance</returns>
       public SendPipelineBuilder WithSpec<T>()

@@ -50,6 +50,24 @@ namespace Winterdom.BizTalk.PipelineTesting
          return docSpec;
       }
 
+      /// <summary>
+      /// Creates a document specification from a CLR
+      /// Type based on its name and containing assembly
+      /// </summary>
+      /// <param name="typeName">The fully qualified (namespace.class) name of 
+      /// the schema</param>
+      /// <param name="assemblyName">The partial or full name of the assembly
+      /// containing the schema</param>
+      /// <returns>The document specification object</returns>
+      public IDocumentSpec LoadDocSpec(string typeName, string assemblyName)
+      {
+         if ( String.IsNullOrEmpty(typeName) )
+            throw new ArgumentNullException("typeName");
+         if ( String.IsNullOrEmpty(assemblyName) )
+            throw new ArgumentNullException("assemblyName");
+
+         return new DocumentSpec(typeName, assemblyName);
+      }
    } // class MessageFactory
 
 } // namespace Winterdom.BizTalk.PipelineTesting

@@ -110,20 +110,39 @@ namespace Winterdom.BizTalk.PipelineTesting
             throw new ArgumentNullException("schemaType");
 
          DocSpecLoader loader = new DocSpecLoader();
-         IConfigurePipelineContext ctxt = (IConfigurePipelineContext)Context;
 
          Type[] roots = GetSchemaRoots(schemaType);
          foreach ( Type root in roots )
          {
             IDocumentSpec docSpec = loader.LoadDocSpec(root);
-            ctxt.AddDocSpecByType(GetSchemaRoot(root), docSpec);
-            // bit of a hack: we add both the assembly qualified name
-            // as well as the full name (no assembly). This gets
-            // around the issue where pipelines referencing local
-            // assemblies don't have the fully qualified name
-            ctxt.AddDocSpecByName(root.AssemblyQualifiedName, docSpec);
-            ctxt.AddDocSpecByName(root.FullName, docSpec);
+            AddDocSpecToContext(docSpec);
          }
+      }
+
+      /// <summary>
+      /// Adds a new document specification to the list
+      /// of Known Schemas for this pipeline.
+      /// </summary>
+      /// <remarks>
+      /// Adding known schemas is necessary so that
+      /// document type resolution works in the disassembler/assembler
+      /// stages. Notice that this overload does NOT do automatic checking
+      /// for multiple roots.
+      /// </remarks>
+      /// <param name="typeName">The fully qualified (namespace.class) name of 
+      /// the schema</param>
+      /// <param name="assemblyName">The partial or full name of the assembly
+      /// containing the schema</param>
+      public void AddDocSpec(string typeName, string assemblyName)
+      {
+         if ( String.IsNullOrEmpty(typeName) )
+            throw new ArgumentNullException("typeName");
+         if ( String.IsNullOrEmpty(assemblyName) )
+            throw new ArgumentNullException("assemblyName");
+
+         DocSpecLoader loader = new DocSpecLoader();
+         IDocumentSpec spec = loader.LoadDocSpec(typeName, assemblyName);
+         AddDocSpecToContext(spec);
       }
 
       /// <summary>
@@ -240,6 +259,21 @@ namespace Winterdom.BizTalk.PipelineTesting
             return string.Format("{0}#{1}", attrs[0].TargetNamespace, attrs[0].RootElement);
          }
          return null;
+      }
+
+      /// <summary>
+      /// Adds a document specification to the context
+      /// </summary>
+      /// <param name="docSpec">Specification to add</param>
+      private void AddDocSpecToContext(IDocumentSpec docSpec)
+      {
+         IConfigurePipelineContext ctxt = (IConfigurePipelineContext)Context;
+         ctxt.AddDocSpecByType(docSpec.DocType, docSpec);
+         // Pipelines referencing local schemas in the same
+         // assembly don't have use the assembly qualified name
+         // of the schema when trying to find it.
+         ctxt.AddDocSpecByName(docSpec.DocSpecStrongName, docSpec);
+         ctxt.AddDocSpecByName(docSpec.DocSpecName, docSpec);
       }
 
       #endregion // Private Methods

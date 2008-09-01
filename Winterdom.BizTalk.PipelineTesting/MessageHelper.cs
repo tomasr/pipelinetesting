@@ -175,6 +175,7 @@ namespace Winterdom.BizTalk.PipelineTesting
       /// Helper method to read back a stream as a string
       /// </summary>
       /// <param name="stream">Stream to consume</param>
+      /// <param name="encoding">Expected encoding of the stream contents</param>
       public static string ReadString(Stream stream, Encoding encoding)
       {
          if ( stream == null )
