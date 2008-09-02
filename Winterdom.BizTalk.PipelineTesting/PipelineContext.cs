@@ -177,10 +177,8 @@ namespace Winterdom.BizTalk.PipelineTesting
          if ( _docSpecsByName.ContainsKey(docSpecName) )
          {
             return _docSpecsByName[docSpecName];
-         } else
-         {
-            throw new COMException();
          }
+         throw new COMException("Could not locate document specification with name: " + docSpecName);
       }
 
       /// <summary>
@@ -194,10 +192,8 @@ namespace Winterdom.BizTalk.PipelineTesting
          if ( _docSpecsByType.ContainsKey(docType) )
          {
             return _docSpecsByType[docType];
-         } else
-         {
-            throw new COMException();
-         }
+         } 
+         throw new COMException("Could not locate document specification with type: " + docType);
       }
 
       /// <summary>

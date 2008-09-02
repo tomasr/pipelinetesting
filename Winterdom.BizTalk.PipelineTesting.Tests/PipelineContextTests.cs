@@ -16,6 +16,7 @@ using Microsoft.BizTalk.Message.Interop;
 using Microsoft.BizTalk.Component.Interop;
 
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 using Winterdom.BizTalk.PipelineTesting;
 using SampleSchemas;
@@ -68,11 +69,17 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
       /// when a docSpec is not found
       /// </summary>
       [Test]
-      [ExpectedException(typeof(COMException))]
       public void ThrowExceptionIfNoDocSpecFoundByName()
       {
-         IPipelineContext context = new PipelineContext();
-         context.GetDocumentSpecByName("non-existant-spec");
+         string specName = "non-existant-spec";
+         try
+         {
+            IPipelineContext context = new PipelineContext();
+            context.GetDocumentSpecByName(specName);
+         } catch ( COMException ex )
+         {
+            Assert.That(ex.Message, new EndsWithConstraint(specName));
+         }
       }
 
       /// <summary>
@@ -94,11 +101,17 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
       /// when a docSpec is not found
       /// </summary>
       [Test]
-      [ExpectedException(typeof(COMException))]
       public void ThrowExceptionIfNoDocSpecFoundByType()
       {
-         IPipelineContext context = new PipelineContext();
-         context.GetDocumentSpecByType("non-existant-spec");
+         string specType = "non-existant-spec";
+         try
+         {
+            IPipelineContext context = new PipelineContext();
+            context.GetDocumentSpecByType(specType);
+         } catch ( COMException ex )
+         {
+            Assert.That(ex.Message, new EndsWithConstraint(specType));
+         }
       }
 
 
