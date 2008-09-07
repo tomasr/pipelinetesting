@@ -54,7 +54,7 @@ namespace Winterdom.BizTalk.PipelineTesting {
          case VarEnum.VT_BOOL:
             return XmlConvert.ToBoolean(value);
          case VarEnum.VT_DATE:
-            return XmlConvert.ToDateTime(value);
+            return XmlConvert.ToDateTime(value, XmlDateTimeSerializationMode.Unspecified);
          case VarEnum.VT_DECIMAL:
             return XmlConvert.ToDecimal(value);
          case VarEnum.VT_EMPTY:

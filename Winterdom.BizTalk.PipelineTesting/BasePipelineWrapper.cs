@@ -179,6 +179,27 @@ namespace Winterdom.BizTalk.PipelineTesting
          return ctxt.EnableTransactionSupport();
       }
 
+      /// <summary>
+      /// Looks up a component in the pipeline
+      /// </summary>
+      /// <param name="stage">The stage the component is in</param>
+      /// <param name="index">The 0-based index inside the stage</param>
+      /// <returns>The component, or null if it was not found</returns>
+      public IBaseComponent GetComponent(PipelineStage stage, int index)
+      {
+         foreach ( PStage st in _pipeline.Stages ) {
+            if ( st.Id == stage.ID ) {
+               IEnumerator enumerator = st.GetComponentEnumerator();
+               while ( enumerator.MoveNext() ) {
+                  if ( index-- == 0 ) {
+                     return (IBaseComponent)enumerator.Current;
+                  }
+               }
+            }
+         }
+         return null;
+      }
+
       #region Protected Methods
       //
       // Protected Methods
