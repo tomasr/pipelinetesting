@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasePipelineWrapper.cs" />
+    <Compile Include="InstConfigPropertyBag.cs" />
     <Compile Include="NullEventStream.cs" />
     <Compile Include="Simple\Assembler.cs" />
     <Compile Include="Simple\FFDisassembler.cs" />

@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InstConfigPropertyBagTests.cs" />
     <Compile Include="Simple\AssemblerTests.cs" />
     <Compile Include="Simple\StreamingTests.cs" />
     <Compile Include="Simple\DisassemblerTests.cs" />
@@ -95,6 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Env_Batch_Input.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PipelineInstanceConfig.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <Stages>
+      <Stage CategoryId="9d0e4107-4cce-4536-83fa-4a5040674ad6">
+         <Components>
+            <Component Name="Microsoft.BizTalk.Component.XmlAsmComp">
+               <Properties>
+                  <AddXmlDeclaration vt="11">0</AddXmlDeclaration>
+                  <PreserveBom vt="11">0</PreserveBom>
+               </Properties>
+            </Component>
+         </Components>
+      </Stage>
+   </Stages>
+</Root>
