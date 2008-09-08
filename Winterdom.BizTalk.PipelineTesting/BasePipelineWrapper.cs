@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
 
 using Microsoft.BizTalk.PipelineOM;
 using Microsoft.BizTalk.Message.Interop;
@@ -187,17 +188,70 @@ namespace Winterdom.BizTalk.PipelineTesting
       /// <returns>The component, or null if it was not found</returns>
       public IBaseComponent GetComponent(PipelineStage stage, int index)
       {
-         foreach ( PStage st in _pipeline.Stages ) {
-            if ( st.Id == stage.ID ) {
+         foreach ( PStage st in _pipeline.Stages )
+         {
+            if ( st.Id == stage.ID )
+            {
                IEnumerator enumerator = st.GetComponentEnumerator();
-               while ( enumerator.MoveNext() ) {
-                  if ( index-- == 0 ) {
+               while ( enumerator.MoveNext() )
+               {
+                  if ( index-- == 0 )
+                  {
                      return (IBaseComponent)enumerator.Current;
                   }
                }
             }
          }
          return null;
+      }
+
+      /// <summary>
+      /// Apply per-instance pipeline configuration
+      /// </summary>
+      /// <param name="file">Path to the XML file with the configuration</param>
+      /// <remarks>
+      /// Per-instance pipeline configuration uses the same XML format used
+      /// by the BizTalk Admin console that gets exported to binding files,
+      /// for example, in the &lt;SendPipelineData&gt; element
+      /// </remarks>
+      public void ApplyInstanceConfig(string file)
+      {
+         using ( XmlReader reader = new XmlTextReader(file) )
+            ApplyInstanceConfig(reader);
+      }
+
+      /// <summary>
+      /// Apply per-instance pipeline configuration
+      /// </summary>
+      /// <param name="reader">XML reader with the configuration</param>
+      /// <remarks>
+      /// Per-instance pipeline configuration uses the same XML format used
+      /// by the BizTalk Admin console that gets exported to binding files,
+      /// for example, in the &lt;SendPipelineData&gt; element
+      /// </remarks>
+      public void ApplyInstanceConfig(XmlReader reader)
+      {
+         Guid stageId = Guid.Empty;
+         int index = 0;
+         while ( reader.Read() )
+         {
+            if ( reader.NodeType == XmlNodeType.Element )
+            {
+               if ( reader.LocalName == "Stage" )
+               {
+                  stageId = new Guid(reader.GetAttribute("CategoryId"));
+                  index = 0;
+               } else if ( reader.LocalName == "Component" )
+               {
+                  string name = reader.GetAttribute("Name");
+                  reader.ReadToDescendant("Properties");
+                  XmlReader propReader = reader.ReadSubtree();
+                  propReader.Read();
+                  ApplyComponentConfig(stageId, name, index, propReader);
+                  index++;
+               }
+            }
+         }
       }
 
       #region Protected Methods
@@ -297,6 +351,30 @@ namespace Winterdom.BizTalk.PipelineTesting
          ctxt.AddDocSpecByName(docSpec.DocSpecName, docSpec);
       }
 
+      /// <summary>
+      /// Applies the loaded configuration to a component
+      /// </summary>
+      /// <param name="stageId">The stage the component is in</param>
+      /// <param name="name">The component name</param>
+      /// <param name="index">The index of the component within the pipeline</param>
+      /// <param name="reader">The per-instance configuration</param>
+      private void ApplyComponentConfig(Guid stageId, string name, int index, XmlReader reader)
+      {
+         PipelineStage stage = PipelineStage.Lookup(stageId);
+         IPersistPropertyBag component = GetComponent(stage, index) 
+            as IPersistPropertyBag;
+         if ( component != null )
+         {
+            String compName = component.GetType().FullName;
+            if ( compName != name )
+               throw new InvalidOperationException(String.Format(
+                  "Component in stage '{0}', index {1} is '{2}', expected '{3}'", 
+                  stage.Name, index, compName, name));
+
+            IPropertyBag bag = new InstConfigPropertyBag(reader);
+            component.Load(bag, 1);
+         }
+      }
       #endregion // Private Methods
 
 

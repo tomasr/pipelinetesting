@@ -25,6 +25,8 @@ namespace Winterdom.BizTalk.PipelineTesting
       private string _name;
       private ExecuteMethod _executeMethod;
       private bool _isReceiveStage;
+      private static IDictionary<Guid, PipelineStage> _stages = 
+         new Dictionary<Guid, PipelineStage>();
 
 
       #region Properties
@@ -71,6 +73,12 @@ namespace Winterdom.BizTalk.PipelineTesting
          _name = name;
          _executeMethod = method;
          _isReceiveStage = isReceiveStage;
+         _stages.Add(_id, this);
+      }
+
+      internal static PipelineStage Lookup(Guid stageId)
+      {
+         return _stages[stageId];
       }
 
       /// <summary>

@@ -11,5 +11,15 @@
             </Component>
          </Components>
       </Stage>
+      <Stage CategoryId="9d0e4108-4cce-4536-83fa-4a5040674ad6">
+         <Components>
+            <Component Name="Microsoft.BizTalk.Component.MIME_SMIME_Encoder">
+               <Properties>
+                  <ContentTransferEncoding vt="8">7bit</ContentTransferEncoding>
+                  <EnableEncryption vt="11">1</EnableEncryption>
+               </Properties>
+            </Component>
+         </Components>
+      </Stage>
    </Stages>
 </Root>

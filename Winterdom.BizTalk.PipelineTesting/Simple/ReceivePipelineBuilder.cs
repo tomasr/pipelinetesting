@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
 
 using Microsoft.BizTalk.PipelineOM;
 using Microsoft.BizTalk.Message.Interop;
@@ -173,6 +174,27 @@ namespace Winterdom.BizTalk.PipelineTesting.Simple
          return this;
       }
 
+      /// <summary>
+      /// Applies per-instance configuration to the pipeline
+      /// </summary>
+      /// <param name="file">XML file with the configuration</param>
+      /// <returns>The configured pipeline</returns>
+      public ReceivePipelineWrapper WithInstanceConfig(string file)
+      {
+         _pipeline.ApplyInstanceConfig(file);
+         return this;
+      }
+
+      /// <summary>
+      /// Applies per-instance configuration to the pipeline
+      /// </summary>
+      /// <param name="reader">XML reader with the configuration</param>
+      /// <returns>The configured pipeline</returns>
+      public ReceivePipelineWrapper WithInstanceConfig(XmlReader reader)
+      {
+         _pipeline.ApplyInstanceConfig(reader);
+         return this;
+      }
    } // class ReceivePipelineBuilder
 
 } // namespace Winterdom.BizTalk.PipelineTesting.Simple
