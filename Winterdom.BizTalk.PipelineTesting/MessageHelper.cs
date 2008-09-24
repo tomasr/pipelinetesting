@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml;
+using System.Xml.XPath;
 
 using Microsoft.BizTalk.PipelineOM;
 using Microsoft.BizTalk.Message.Interop;
@@ -207,6 +209,60 @@ namespace Winterdom.BizTalk.PipelineTesting
          if ( !String.IsNullOrEmpty(part.Charset) )
             enc = Encoding.GetEncoding(part.Charset);
          return ReadString(part.Data, enc);
+      }
+
+      /// <summary>
+      /// Loads a BizTalk message from the set of files exported from
+      /// the BizTalk Admin Console or HAT
+      /// </summary>
+      /// <param name="contextFile">Path to the *_context.xml file</param>
+      /// <returns>The loaded message</returns>
+      /// <remarks>
+      /// Context files have no type information for properties
+      /// in the message context, so all properties are 
+      /// added as strings to the context.
+      /// </remarks>
+      public static IBaseMessage LoadMessage(string contextFile)
+      {
+         IBaseMessage msg = _factory.CreateMessage();
+         IBaseMessageContext ctxt = _factory.CreateMessageContext();
+         msg.Context = ctxt;
+
+         XPathDocument doc = new XPathDocument(contextFile);
+         XPathNavigator nav = doc.CreateNavigator();
+         XPathNodeIterator props = nav.Select("//Property");
+         foreach ( XPathNavigator prop in props )
+         {
+            ctxt.Write(
+               prop.GetAttribute("Name", ""),
+               prop.GetAttribute("Namespace", ""), 
+               prop.GetAttribute("Value", "")
+               );
+         }
+
+         XPathNodeIterator parts = nav.Select("//MessagePart");
+         foreach ( XPathNavigator part in parts )
+         {
+            LoadPart(msg, part, contextFile);
+         }
+         return msg;
+      }
+
+      private static void LoadPart(IBaseMessage msg, XPathNavigator node, string contextFile)
+      {
+         // don't care about the id because we can't set it anyway
+         string name = node.GetAttribute("Name", "");
+         string filename = node.GetAttribute("FileName", "");
+         string charset = node.GetAttribute("Charset", "");
+         string contentType = node.GetAttribute("ContentType", "");
+         bool isBody = XmlConvert.ToBoolean(node.GetAttribute("IsBodyPart", ""));
+
+         XmlResolver resolver = new XmlUrlResolver();
+         Uri realfile = resolver.ResolveUri(new Uri(contextFile), filename);
+         IBaseMessagePart part = CreatePartFromStream(File.OpenRead(realfile.LocalPath));
+         part.Charset = charset;
+         part.ContentType = contentType;
+         msg.AddPart(name, part, isBody);
       }
    } // class MessageFactory
 

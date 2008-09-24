@@ -162,6 +162,32 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
          IBaseMessage message = MessageHelper.CreateFromString(body);
          Assert.AreEqual(body, MessageHelper.ReadString(message));
       }
+
+      /// <summary>
+      /// Test we can load an entire biztalk message
+      /// from files exported by the biztalk console
+      /// </summary>
+      [Test]
+      public void CanLoadMessageFromFiles()
+      {
+         string dir = Path.GetTempPath();
+         string ctxFile = "doc1_context.xml";
+         string bodyFile = "doc1_body.out";
+         DocLoader.ExtractToDir(ctxFile, dir);
+         DocLoader.ExtractToDir(bodyFile, dir);
+
+         IBaseMessage msg = 
+            MessageHelper.LoadMessage(Path.Combine(dir, ctxFile));
+         Assert.IsNotNull(msg);
+         Assert.AreEqual(1, msg.PartCount);
+
+         string ns = "http://schemas.microsoft.com/BizTalk/2003/file-properties";
+         string val = (string)msg.Context.Read("ReceivedFileName", ns);
+
+         IBaseMessagePart part = msg.BodyPart;
+         Assert.AreEqual("UTF-8", part.Charset);
+         Assert.AreEqual("text/xml", part.ContentType);
+      }
    } // class MessageHelperTests
 
 } // namespace Winterdom.BizTalk.PipelineTesting.Tests

@@ -1,0 +1,34 @@
+<MessageInfo>
+  <ContextInfo PropertiesCount="25">
+    <Property Name="FileCreationTime" Namespace="http://schemas.microsoft.com/BizTalk/2003/file-properties" Value="9/17/2008 2:04:29 AM" />
+    <Property Name="ReceivedFileName" Namespace="http://schemas.microsoft.com/BizTalk/2003/file-properties" Value="C:\temp\biztalk\in\{7BB7EB19-0D2B-4576-B32A-49F3DAA26D8A}.xml" />
+    <ArrayProperty Name="PartNames" Namespace="http://schemas.microsoft.com/BizTalk/2003/messageagent-properties">
+      <ArrayElement1 Value="body" />
+    </ArrayProperty>
+    <Property Name="ActivityIdentity" Namespace="http://schemas.microsoft.com/BizTalk/2003/messagetracking-properties" Value="{A143F58D-9B42-450A-BD41-3F39032AB11B}" />
+    <Property Name="AdapterReceiveCompleteTime" Namespace="http://schemas.microsoft.com/BizTalk/2003/messagetracking-properties" Value="9/17/2008 2:04:42 AM" />
+    <Property Name="PartyName" Namespace="http://schemas.microsoft.com/BizTalk/2003/messagetracking-properties" Value="" />
+    <Property Name="PortName" Namespace="http://schemas.microsoft.com/BizTalk/2003/messagetracking-properties" Value="ReceivePort2" />
+    <Property Name="InboundTransportLocation" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="C:\temp\biztalk\in\*.xml" />
+    <Property Name="InterchangeID" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="{A9CF8961-A7C6-40DF-BF55-CDEEBF96CBC0}" />
+    <Property Name="LastInterchangeMessage" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="1" />
+    <Property Name="ReceiveInstanceID" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="{0CC1D24C-3742-4B1E-A394-03A90A247238}" />
+    <Property Name="ReceiveLocationName" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="Receive Location3" />
+    <Property Name="ReceivePortID" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="{448B2B90-4FB2-482B-83E1-D5CF6E3BCF99}" />
+    <Property Name="ReceivePortName" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="ReceivePort2" />
+    <Property Name="AuthenticationRequiredOnReceivePort" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="0" />
+    <Property Name="InboundTransportType" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="FILE" />
+    <Property Name="InterchangeSequenceNumber" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="1" />
+    <Property Name="LRPMsgBodyTracking" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="0" />
+    <Property Name="MessageExchangePattern" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="1" />
+    <Property Name="ReceivePipelineID" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="{D87BC2D5-80AE-4CD5-B66B-CCA77437D311}" />
+    <Property Name="ReceivePortAuth" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="0" />
+    <Property Name="SourcePartyID" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="s-1-5-7" />
+    <Property Name="MessageType" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="http://SampleSchemas.TypedEnv#Envelope" />
+    <Property Name="ReceivePipelineConfig" Namespace="http://schemas.microsoft.com/BizTalk/2003/system-properties" Value="&lt;Root xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;Stages&gt;&lt;Stage CategoryId=&quot;9d0e4105-4cce-4536-83fa-4a5040674ad6&quot;&gt;&lt;Components&gt;&lt;Component Name=&quot;Microsoft.BizTalk.Component.XmlDasmComp&quot;&gt;&lt;Properties&gt;&lt;AllowUnrecognizedMessage vt=&quot;11&quot;&gt;-1&lt;/AllowUnrecognizedMessage&gt;&lt;/Properties&gt;&lt;/Component&gt;&lt;/Components&gt;&lt;/Stage&gt;&lt;Stage CategoryId=&quot;9d0e410e-4cce-4536-83fa-4a5040674ad6&quot;&gt;&lt;Components&gt;&lt;Component Name=&quot;Microsoft.BizTalk.Component.PartyRes&quot;&gt;&lt;Properties /&gt;&lt;/Component&gt;&lt;/Components&gt;&lt;/Stage&gt;&lt;/Stages&gt;&lt;/Root&gt;" />
+    <Property Name="SourceCharset" Namespace="http://schemas.microsoft.com/BizTalk/2003/xmlnorm-properties" Value="utf-8" />
+  </ContextInfo>
+  <PartInfo PartsCount="1">
+    <MessagePart ID="{2F3C3A6A-ECAC-496E-AB44-14C0EC22ECF4}" Name="body" FileName="doc1_body.out" Charset="UTF-8" ContentType="text/xml" IsBodyPart="1" />
+  </PartInfo>
+</MessageInfo>

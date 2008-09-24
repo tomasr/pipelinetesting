@@ -27,6 +27,22 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
          Assembly assembly = Assembly.GetExecutingAssembly();
          return assembly.GetManifestResourceStream(resName);
       }
+
+      public static void ExtractToDir(string name, string dir)
+      {
+         string fullname = Path.Combine(dir, name);
+         using ( Stream source = LoadStream(name) )
+         using ( Stream target = File.Create(fullname) )
+            CopyStream(source, target);
+      }
+
+      private static void CopyStream(Stream source, Stream target)
+      {
+         byte[] buffer = new byte[4096];
+         int read;
+         while ( (read = source.Read(buffer, 0, buffer.Length)) > 0 )
+            target.Write(buffer, 0, read);
+      }
    
    } // class DocLoader
 
