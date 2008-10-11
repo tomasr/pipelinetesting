@@ -102,6 +102,17 @@ namespace Winterdom.BizTalk.PipelineTesting.Simple
       }
 
       /// <summary>
+      /// Configures the component to allow unrecognized messages
+      /// </summary>
+      /// <param name="allow">If true, allows messages without schema</param>
+      /// <returns>This instance</returns>
+      public XmlDisassembler AllowUnrecognized(bool allow)
+      {
+         _disassembler.AllowUnrecognizedMessage = allow;
+         return this;
+      }
+
+      /// <summary>
       /// Return the constructed component
       /// </summary>
       /// <returns>The XmlDasmComp component</returns>
