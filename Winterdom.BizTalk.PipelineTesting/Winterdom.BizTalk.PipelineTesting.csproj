@@ -101,4 +101,9 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(SolutionDir)\bin\"
+copy "$(TargetDir)\$(ProjectName).dll" "$(SolutionDir)\bin\"
+copy "$(TargetDir)\$(ProjectName).xml" "$(SolutionDir)\bin\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
