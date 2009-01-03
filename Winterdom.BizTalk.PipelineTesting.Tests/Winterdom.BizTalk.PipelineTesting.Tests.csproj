@@ -63,6 +63,7 @@
     <Compile Include="InstConfigPropertyBagTests.cs" />
     <Compile Include="Simple\AssemblerTests.cs" />
     <Compile Include="Simple\PerInstanceTests.cs" />
+    <Compile Include="Simple\SchemaTesterTests.cs" />
     <Compile Include="Simple\StreamingTests.cs" />
     <Compile Include="Simple\DisassemblerTests.cs" />
     <Compile Include="Simple\PipelineUsageTests.cs" />

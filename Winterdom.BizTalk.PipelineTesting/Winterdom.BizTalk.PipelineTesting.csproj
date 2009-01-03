@@ -72,6 +72,7 @@
     <Compile Include="NullEventStream.cs" />
     <Compile Include="Simple\Assembler.cs" />
     <Compile Include="Simple\FFDisassembler.cs" />
+    <Compile Include="Simple\SchemaTester.cs" />
     <Compile Include="Simple\XmlDisassembler.cs" />
     <Compile Include="Simple\Disassembler.cs" />
     <Compile Include="Simple\FFAssembler.cs" />
