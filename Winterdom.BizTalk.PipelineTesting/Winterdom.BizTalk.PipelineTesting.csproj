@@ -103,8 +103,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>mkdir "$(SolutionDir)\bin\"
-copy "$(TargetDir)\$(ProjectName).dll" "$(SolutionDir)\bin\"
-copy "$(TargetDir)\$(ProjectName).xml" "$(SolutionDir)\bin\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /C /Y "$(TargetDir)$(ProjectName).dll" "$(SolutionDir)\bin\"
+xcopy /C /Y "$(TargetDir)$(ProjectName).xml" "$(SolutionDir)\bin\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

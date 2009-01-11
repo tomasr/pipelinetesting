@@ -23,6 +23,20 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
             Assert.Fail(ex.ToString());
          }
       }
+
+      [Test]
+      public void CanGetErrorInfoWhenFFParsingFails() {
+         Stream input = DocLoader.LoadStream("CSV_FF_RecvInput_Bad.txt");
+         try {
+            Stream output = SchemaTester<Schema3_FF>.ParseFF(input);
+            MessageHelper.ConsumeStream(output);
+         } catch ( Exception ex ) {
+            Assert.IsTrue(ErrorHelper.GetErrorMessage(ex).Contains("Unexpected data"), "Unexpected error message found");
+            return;
+         }
+         Assert.Fail("Parsing should've thrown an error");
+      }
+
       [Test]
       public void CanTestFlatFileAssembling() {
          Stream input = DocLoader.LoadStream("CSV_XML_SendInput.xml");
@@ -30,6 +44,7 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
          String text = new StreamReader(output).ReadToEnd();
          Assert.IsTrue(text.Contains(","), "Output contains no commas");
       }
+
       [Test]
       public void CanTestXmlParsing() {
          Stream input = DocLoader.LoadStream("SampleDocument.xml");
@@ -41,6 +56,21 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
             Assert.Fail(ex.ToString());
          }
       }
+
+      [Test]
+      public void CanGetErrorWhenXmlParsingFails() {
+         Stream input = DocLoader.LoadStream("SampleDocument_Bad.xml");
+         try {
+            Stream output = SchemaTester<Schema2_WPP>.ParseXml(input);
+            MessageHelper.ConsumeStream(output);
+         } catch ( Exception ex ) {
+            String msg = ErrorHelper.GetErrorMessage(ex);
+            Assert.IsTrue(msg.Contains("incomplete content"), "Unexpected error message");
+            return;
+         }
+         Assert.Fail("Parsing should've thrown an error");
+      }
+
       [Test]
       public void CanTestXmlAssembling() {
          Stream input = DocLoader.LoadStream("SampleDocument.xml");

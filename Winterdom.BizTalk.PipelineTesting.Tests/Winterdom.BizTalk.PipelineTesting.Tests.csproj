@@ -108,6 +108,12 @@
   <ItemGroup>
     <EmbeddedResource Include="doc1_context.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSV_FF_RecvInput_Bad.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SampleDocument_Bad.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

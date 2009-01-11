@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ns0:Root xmlns:ns0="http://SampleSchemas.Schema2_WPP">
+   <Record1 Field1="Field1_0">
+      <!-- Missing field here -->
+   </Record1>
+</ns0:Root>
