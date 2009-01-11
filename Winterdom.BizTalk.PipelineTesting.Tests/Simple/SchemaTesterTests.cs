@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml;
 
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 using Winterdom.BizTalk.PipelineTesting.Simple;
 using SampleSchemas;
 
@@ -31,7 +32,8 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
             Stream output = SchemaTester<Schema3_FF>.ParseFF(input);
             MessageHelper.ConsumeStream(output);
          } catch ( Exception ex ) {
-            Assert.IsTrue(ErrorHelper.GetErrorMessage(ex).Contains("Unexpected data"), "Unexpected error message found");
+            String msg = ErrorHelper.GetErrorMessage(ex);
+            Assert.That(msg, new ContainsConstraint("Unexpected data"));
             return;
          }
          Assert.Fail("Parsing should've thrown an error");
@@ -65,7 +67,7 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
             MessageHelper.ConsumeStream(output);
          } catch ( Exception ex ) {
             String msg = ErrorHelper.GetErrorMessage(ex);
-            Assert.IsTrue(msg.Contains("incomplete content"), "Unexpected error message");
+            Assert.That(msg, new ContainsConstraint("incomplete content"));
             return;
          }
          Assert.Fail("Parsing should've thrown an error");
