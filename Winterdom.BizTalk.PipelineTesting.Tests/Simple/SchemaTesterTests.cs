@@ -24,6 +24,14 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
             Assert.Fail(ex.ToString());
          }
       }
+      [Test]
+      public void CanTestFlatFileParsingWithFiles() {
+         String tmp = Path.GetTempFileName();
+         String input = SaveToTemp("CSV_FF_RecvInput.txt");
+         SchemaTester<Schema3_FF>.ParseFF(input, tmp);
+         Assert.IsTrue(File.Exists(tmp));
+         Assert.Greater(new FileInfo(tmp).Length, 0);
+      }
 
       [Test]
       public void CanGetErrorInfoWhenFFParsingFails() {
@@ -48,6 +56,17 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
       }
 
       [Test]
+      public void CanTestFlatFileAssemblingWithFiles() {
+         String tmp = Path.GetTempFileName();
+         String input = SaveToTemp("CSV_XML_SendInput.xml");
+         SchemaTester<Schema3_FF>.AssembleFF(input, tmp);
+         Assert.IsTrue(File.Exists(tmp));
+         Assert.Greater(new FileInfo(tmp).Length, 0);
+      }
+
+
+
+      [Test]
       public void CanTestXmlParsing() {
          Stream input = DocLoader.LoadStream("SampleDocument.xml");
          Stream output = SchemaTester<Schema2_WPP>.ParseXml(input);
@@ -57,6 +76,14 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
          } catch ( Exception ex ) {
             Assert.Fail(ex.ToString());
          }
+      }
+      [Test]
+      public void CanTestXmlParsingWithFiles() {
+         String tmp = Path.GetTempFileName();
+         String input = SaveToTemp("SampleDocument.xml");
+         SchemaTester<Schema2_WPP>.ParseXml(input, tmp);
+         Assert.IsTrue(File.Exists(tmp));
+         Assert.Greater(new FileInfo(tmp).Length, 0);
       }
 
       [Test]
@@ -83,6 +110,20 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
          } catch ( Exception ex ) {
             Assert.Fail(ex.ToString());
          }
+      }
+
+      [Test]
+      public void CanTestXmlAssemblingWithFiles() {
+         String tmp = Path.GetTempFileName();
+         String input = SaveToTemp("SampleDocument.xml");
+         SchemaTester<Schema2_WPP>.AssembleXml(input, tmp);
+         Assert.IsTrue(File.Exists(tmp));
+         Assert.Greater(new FileInfo(tmp).Length, 0);
+      }
+
+      private string SaveToTemp(String res) {
+         DocLoader.ExtractToDir(res, Path.GetTempPath());
+         return Path.Combine(Path.GetTempPath(), res);
       }
    }
 }

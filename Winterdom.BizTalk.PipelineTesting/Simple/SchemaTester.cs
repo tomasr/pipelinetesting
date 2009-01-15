@@ -7,6 +7,17 @@ using Microsoft.BizTalk.Message.Interop;
 using Microsoft.BizTalk.Component;
 
 namespace Winterdom.BizTalk.PipelineTesting.Simple {
+
+   /// <summary>
+   /// Makes it easier to do basic testing of BizTalk schema
+   /// parsing and assembling functionality.
+   /// </summary>
+   /// <remarks>
+   /// SchemaTester works by creating a dynamic pipeline with
+   /// either the XML or Flat File components and running your
+   /// input documents through it.
+   /// </remarks>
+   /// <typeparam name="T">The BizTalk Schema to use</typeparam>
    public static class SchemaTester<T> {
       /// <summary>
       /// Parses stream using the Flat File 
@@ -23,6 +34,25 @@ namespace Winterdom.BizTalk.PipelineTesting.Simple {
          return Parse(ff, inputDocument);
       }
       /// <summary>
+      /// Parses the file using the Flat File 
+      /// disassembler and the specified schema and writes the result
+      /// to another file
+      /// </summary>
+      /// <param name="inputPath">Path to the flat file to parse</param>
+      /// <param name="outputPath">File to write output to</param>
+      /// <remarks>
+      /// Use <c ref='ErrorHelper.GetErrorMessage'/> to
+      /// get detailed error information when parsing fails.
+      /// </remarks>
+      public static void ParseFF(String inputPath, String outputPath) {
+         using ( Stream input = new FileStream(inputPath, FileMode.Open) ) {
+            using ( Stream output = ParseFF(input) ) {
+               WriteToFile(output, outputPath);
+            }
+         }
+      }
+
+      /// <summary>
       /// Parses a stream using the XML disassembler with
       /// the specified schema and validation enabled.
       /// </summary>
@@ -38,6 +68,24 @@ namespace Winterdom.BizTalk.PipelineTesting.Simple {
          return Parse(xml, inputDocument);
       }
       /// <summary>
+      /// Parses a file using the XML disassembler with
+      /// the specified schema and validation enabled, and writes
+      /// the result to another file
+      /// </summary>
+      /// <param name="inputPath">The path to the XML doc to parse</param>
+      /// <param name="outputPath">The path to write the results to</param>
+      /// <remarks>
+      /// Use <c ref='ErrorHelper.GetErrorMessage'/> to
+      /// get detailed error information when parsing fails.
+      /// </remarks>
+      public static void ParseXml(String inputPath, String outputPath) {
+         using ( Stream input = new FileStream(inputPath, FileMode.Open) ) {
+            using ( Stream output = ParseXml(input) ) {
+               WriteToFile(output, outputPath);
+            }
+         }
+      }
+      /// <summary>
       /// Generates a flat file from an XML document with the
       /// specified schema
       /// </summary>
@@ -47,6 +95,20 @@ namespace Winterdom.BizTalk.PipelineTesting.Simple {
          FFAssembler ff = Assembler.FlatFile()
             .WithDocumentSpec<T>();
          return Assemble(ff, inputDocument);
+      }
+
+      /// <summary>
+      /// Generates a flat file from an XML document with the
+      /// specified schema and writes the result to another file
+      /// </summary>
+      /// <param name="inputPath">The path to the XML document</param>
+      /// <param name="outputPath">The path to write the output flat file to</param>
+      public static void AssembleFF(String inputPath, String outputPath) {
+         using ( Stream input = new FileStream(inputPath, FileMode.Open) ) {
+            using ( Stream output = AssembleFF(input) ) {
+               WriteToFile(output, outputPath);
+            }
+         }
       }
       /// <summary>
       /// Generates an XML file from an XML document with the
@@ -58,6 +120,20 @@ namespace Winterdom.BizTalk.PipelineTesting.Simple {
          XmlAssembler xml = Assembler.Xml()
             .WithDocumentSpec<T>();
          return Assemble(xml, inputDocument);
+      }
+
+      /// <summary>
+      /// Generates an XML file from an XML document with the
+      /// specified schema
+      /// </summary>
+      /// <param name="inputPath">The path to the XML document</param>
+      /// <param name="outputPath">The path to write the output to</param>
+      public static void AssembleXml(String inputPath, String outputPath) {
+         using ( Stream input = new FileStream(inputPath, FileMode.Open) ) {
+            using ( Stream output = AssembleXml(input) ) {
+               WriteToFile(output, outputPath);
+            }
+         }
       }
 
       private static Stream Parse(Disassembler component, Stream inputDocument) {
@@ -77,6 +153,15 @@ namespace Winterdom.BizTalk.PipelineTesting.Simple {
             MessageHelper.CreateFromStream(inputDocument)
          );
          return output.BodyPart.GetOriginalDataStream();
+      }
+      private static void WriteToFile(Stream output, string outputPath) {
+         Stream outStream = new FileStream(outputPath, FileMode.OpenOrCreate);
+         using ( outStream ) {
+            byte[] buf = new byte[4096];
+            int read = 0;
+            while ( (read = output.Read(buf, 0, buf.Length)) > 0 )
+               outStream.Write(buf, 0, read);
+         }
       }
    }
 
