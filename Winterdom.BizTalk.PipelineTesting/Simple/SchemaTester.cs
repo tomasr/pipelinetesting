@@ -183,7 +183,11 @@ namespace Winterdom.BizTalk.PipelineTesting.Simple {
          }
          XmlDasmException xdasmex = ex as XmlDasmException;
          if ( xdasmex != null ) {
-            return xdasmex.GetArgument(0);
+            StringBuilder errors = new StringBuilder();
+            for ( int i = 0; i < xdasmex.ArgumentCount; i++ ) {
+               errors.AppendLine(xdasmex.GetArgument(i));
+            }
+            return errors.ToString();
          }
          return ex.Message;
       }
