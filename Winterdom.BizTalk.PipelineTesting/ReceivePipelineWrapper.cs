@@ -56,7 +56,9 @@ namespace Winterdom.BizTalk.PipelineTesting
             // we have to consume the entire stream for the body part.
             // Otherwise, the disassembler might enter an infinite loop.
             // We currently copy the output into a new memory stream
-            om.BodyPart.Data = CopyStream(om.BodyPart.Data);
+            if ( om.BodyPart != null && om.BodyPart.Data != null ) {
+               om.BodyPart.Data = CopyStream(om.BodyPart.Data);
+            }
         }
 
          return output;
