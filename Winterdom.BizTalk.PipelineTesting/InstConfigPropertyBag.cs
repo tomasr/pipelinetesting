@@ -28,7 +28,7 @@ namespace Winterdom.BizTalk.PipelineTesting {
             if ( reader.NodeType == XmlNodeType.Element ) {
                String name = reader.LocalName;
                String type = reader.GetAttribute("vt");
-               String value = reader.ReadElementContentAsString();
+               String value = reader.ReadString();
                Write(name, type, value);
             }
          }

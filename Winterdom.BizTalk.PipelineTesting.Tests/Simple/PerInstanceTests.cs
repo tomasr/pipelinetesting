@@ -54,6 +54,28 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
          Assert.AreEqual(MIME_SMIME_Encoder.MIMETransferEncodingType.SevenBit, 
             enc.ContentTransferEncoding);
       }
+      [Test]
+      public void CanApplyConfigToPipelineDifferentFormatting() {
+         // make sure XML formatting is not causing trouble
+         XmlTextReader reader = new XmlTextReader(
+            DocLoader.LoadStream("PipelineInstanceConfig2.xml")
+         );
+         SendPipelineWrapper pipeline = Pipelines.Xml.Send()
+            .WithAssembler(Assembler.Xml())
+            .WithEncoder(new MIME_SMIME_Encoder())
+            .WithInstanceConfig(reader);
+
+         XmlAsmComp xmlassm = (XmlAsmComp)
+            pipeline.GetComponent(PipelineStage.Assemble, 0);
+         Assert.IsFalse(xmlassm.AddXMLDeclaration);
+         Assert.IsFalse(xmlassm.PreserveBom);
+
+         MIME_SMIME_Encoder enc = (MIME_SMIME_Encoder)
+            pipeline.GetComponent(PipelineStage.Encode, 0);
+         Assert.IsTrue(enc.EnableEncryption);
+         Assert.AreEqual(MIME_SMIME_Encoder.MIMETransferEncodingType.SevenBit, 
+            enc.ContentTransferEncoding);
+      }
    } // class StreamingTests
 
 } // namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple
