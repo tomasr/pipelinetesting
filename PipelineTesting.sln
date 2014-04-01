@@ -6,6 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterdom.BizTalk.PipelineT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleSchemas", "SampleSchemas\SampleSchemas.btproj", "{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{86CC4387-BC63-4411-B5E8-62A8B979C3DE}"
+	ProjectSection(SolutionItems) = preProject
+		Winterdom.BizTalk.PipelineTesting\Winterdom.BizTalk.PipelineTesting.nuspec = Winterdom.BizTalk.PipelineTesting\Winterdom.BizTalk.PipelineTesting.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET

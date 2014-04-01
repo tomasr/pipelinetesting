@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Winterdom.BizTalk.PipelineTesting")]
 [assembly: AssemblyDescription("Helper components for unit-testing pipelines and pipeline components")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Tomas Restrepo")]
 [assembly: AssemblyProduct("Winterdom.BizTalk.PipelineTesting")]
 [assembly: AssemblyCopyright("Copyright © 2008 Tomas Restrepo")]
 [assembly: AssemblyTrademark("")]
