@@ -1,11 +1,10 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterdom.BizTalk.PipelineTesting", "Winterdom.BizTalk.PipelineTesting\Winterdom.BizTalk.PipelineTesting.csproj", "{E0249498-3585-4D40-91B6-81B7C5C5F608}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winterdom.BizTalk.PipelineTesting.Tests", "Winterdom.BizTalk.PipelineTesting.Tests\Winterdom.BizTalk.PipelineTesting.Tests.csproj", "{7993B5F3-51AD-450B-9DE3-6FC0203137AA}"
 EndProject
-Project("{EF7E3281-CD33-11D4-8326-00C04FA0CE8D}") = "SampleSchemas", "SampleSchemas\SampleSchemas.btproj", "{98D98278-EA7E-46D4-8FD8-297D466A9451}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleSchemas", "SampleSchemas\SampleSchemas.btproj", "{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,33 +62,34 @@ Global
 		{7993B5F3-51AD-450B-9DE3-6FC0203137AA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7993B5F3-51AD-450B-9DE3-6FC0203137AA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7993B5F3-51AD-450B-9DE3-6FC0203137AA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Debug|.NET.ActiveCfg = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Debug|.NET.Build.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Debug|.NET.Deploy.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Debug|Any CPU.ActiveCfg = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Debug|Mixed Platforms.ActiveCfg = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Debug|Mixed Platforms.Build.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Debug|Mixed Platforms.Deploy.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Deployment|.NET.ActiveCfg = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Deployment|.NET.Build.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Deployment|.NET.Deploy.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Deployment|Any CPU.ActiveCfg = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Deployment|Mixed Platforms.ActiveCfg = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Deployment|Mixed Platforms.Build.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Deployment|Mixed Platforms.Deploy.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Development|.NET.ActiveCfg = Development|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Development|.NET.Build.0 = Development|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Development|Any CPU.ActiveCfg = Development|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Development|Mixed Platforms.ActiveCfg = Development|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Development|Mixed Platforms.Build.0 = Development|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Development|Mixed Platforms.Deploy.0 = Development|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Release|.NET.ActiveCfg = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Release|.NET.Build.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Release|.NET.Deploy.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Release|Any CPU.ActiveCfg = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Release|Mixed Platforms.ActiveCfg = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Release|Mixed Platforms.Build.0 = Deployment|.NET
-		{98D98278-EA7E-46D4-8FD8-297D466A9451}.Release|Mixed Platforms.Deploy.0 = Deployment|.NET
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Deployment|.NET.ActiveCfg = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Deployment|Any CPU.ActiveCfg = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Deployment|Any CPU.Build.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Deployment|Any CPU.Deploy.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Deployment|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Deployment|Mixed Platforms.Build.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Deployment|Mixed Platforms.Deploy.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Development|.NET.ActiveCfg = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Development|Any CPU.Deploy.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Development|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Development|Mixed Platforms.Build.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Development|Mixed Platforms.Deploy.0 = Debug|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Release|.NET.ActiveCfg = Release|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
