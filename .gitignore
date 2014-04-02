@@ -1,3 +1,7 @@
+*.xsd.cs
+*.btp.cs
+*.nupkg
+
 bin/
 obj/
 *.dll

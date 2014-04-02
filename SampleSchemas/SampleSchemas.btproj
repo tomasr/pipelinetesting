@@ -1,145 +1,156 @@
-﻿<VisualStudioProject>
-    <BIZTALK
-        ProductVersion = "3.6.1404"
-        SchemaVersion = "1.0"
-        ProjectGuid = "{98D98278-EA7E-46D4-8FD8-297D466A9451}"
-    >
-        <Build>
-            <Settings>
-                <EditorCommon/>
-                <ProjectCommon
-                    AssemblyKeyName = ""
-                    AssemblyKeyFile = "..\..\SampleSchemas.snk"
-                    AssemblyDelaySign = "False"
-                    AssemblyTitle = ""
-                    AssemblyDescription = ""
-                    AssemblyDefaultAlias = ""
-                    AssemblyConfiguration = ""
-                    AssemblyTrademark = ""
-                    AssemblyProduct = ""
-                    AssemblyInformationalVersion = "1.0.0.0"
-                    AssemblyFileVersion = "1.0.0.0"
-                    AssemblyCopyright = ""
-                    AssemblyCompany = ""
-                    AssemblyVersion = "1.0.0.0"
-                    DefaultNamespace = "SampleSchemas"
-                    AssemblyName = "SampleSchemas"
-                />
-                <Config
-                    Name = "Development"
-                    ApplicationName = ""
-                    BpelCompliance = "True"
-                    GenerateDebuggingInformation = "True"
-                    EmbedTrackingInformation = "True"
-                    TreatWarningsAsErrors = "False"
-                    WarningLevel = "4"
-                    OutputPath = "bin\Development\"
-                />
-                <Config
-                    Name = "Deployment"
-                    ApplicationName = ""
-                    BpelCompliance = "True"
-                    GenerateDebuggingInformation = "False"
-                    EmbedTrackingInformation = "True"
-                    TreatWarningsAsErrors = "False"
-                    WarningLevel = "4"
-                    OutputPath = "bin\Deployment\"
-                />
-            </Settings>
-            <References>
-                <Reference
-                    Name = "System"
-                    AssemblyName = "System"
-                />
-                <Reference
-                    Name = "System.XML"
-                    AssemblyName = "System.Xml"
-                />
-                <Reference
-                    Name = "Microsoft.BizTalk.DefaultPipelines"
-                    AssemblyName = "Microsoft.BizTalk.DefaultPipelines"
-                />
-                <Reference
-                    Name = "Microsoft.BizTalk.GlobalPropertySchemas"
-                    AssemblyName = "Microsoft.BizTalk.GlobalPropertySchemas"
-                />
-                <Reference
-                    Name = "Microsoft.BizTalk.Pipeline.Components"
-                    AssemblyName = "Microsoft.BizTalk.Pipeline.Components"
-                    HintPath = "C:\WINDOWS\assembly\GAC_MSIL\Microsoft.BizTalk.Pipeline.Components\3.0.1.0__31bf3856ad364e35\Microsoft.BizTalk.Pipeline.Components.dll"
-                />
-            </References>
-        </Build>
-        <Files>
-            <Include>
-                <File
-                    RelPath = "CSV_FF_RecvPipeline.btp"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "CSV_FF_RecvPipeline"
-                />
-                <File
-                    RelPath = "CSV_FF_SendPipeline.btp"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "CSV_FF_SendPipeline"
-                />
-                <File
-                    RelPath = "Env_SendPipeline.btp"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "Env_SendPipeline"
-                />
-                <File
-                    RelPath = "NoNS.xsd"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "NoNS"
-                />
-                <File
-                    RelPath = "PropSchema1.xsd"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "PropSchema1"
-                />
-                <File
-                    RelPath = "ReceivePipeline1.btp"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "ReceivePipeline1"
-                />
-                <File
-                    RelPath = "Schema1_NPP.xsd"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "Schema1_NPP"
-                />
-                <File
-                    RelPath = "Schema2_WPP.xsd"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "Schema2_WPP"
-                />
-                <File
-                    RelPath = "Schema3_FF.xsd"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "Schema3_FF"
-                />
-                <File
-                    RelPath = "SimpleBody.xsd"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "SimpleBody"
-                />
-                <File
-                    RelPath = "SimpleEnv.xsd"
-                    BuildAction = "Compile"
-                    Namespace = "SampleSchemas"
-                    Type = "SimpleEnv"
-                />
-            </Include>
-        </Files>
-    </BIZTALK>
-</VisualStudioProject>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{55CE34AE-7645-46E0-81B3-5BBEEEB443F5}</ProjectGuid>
+    <ProjectTypeGuids>{EF7E3281-CD33-11D4-8326-00C04FA0CE8D};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>library</OutputType>
+    <GenericProcessing>true</GenericProcessing>
+    <RootNamespace>SampleSchemas</RootNamespace>
+    <AssemblyName>SampleSchemas</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <BpelCompliance>True</BpelCompliance>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SampleSchemas.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.BizTalk.Pipeline.Components, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Name>System.Configuration</Name>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.Pipeline">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.DefaultPipelines">
+      <Name>Microsoft.BizTalk.DefaultPipelines</Name>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.GlobalPropertySchemas">
+      <Name>Microsoft.BizTalk.GlobalPropertySchemas</Name>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.TestTools">
+      <Name>Microsoft.BizTalk.TestTools</Name>
+    </Reference>
+    <Reference Include="Microsoft.XLANGs.BaseTypes">
+      <Name>Microsoft.XLANGs.BaseTypes</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NoNS.xsd.cs">
+      <DependentUpon>NoNS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropSchema1.xsd.cs">
+      <DependentUpon>PropSchema1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Schema1_NPP.xsd.cs">
+      <DependentUpon>Schema1_NPP.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Schema2_WPP.xsd.cs">
+      <DependentUpon>Schema2_WPP.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Schema3_FF.xsd.cs">
+      <DependentUpon>Schema3_FF.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleBody.xsd.cs">
+      <DependentUpon>SimpleBody.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleEnv.xsd.cs">
+      <DependentUpon>SimpleEnv.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Pipeline Include="CSV_FF_RecvPipeline.btp">
+      <TypeName>CSV_FF_RecvPipeline</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Pipeline>
+    <Pipeline Include="CSV_FF_SendPipeline.btp">
+      <TypeName>CSV_FF_SendPipeline</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Pipeline>
+    <Pipeline Include="Env_SendPipeline.btp">
+      <TypeName>Env_SendPipeline</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Pipeline>
+    <Pipeline Include="ReceivePipeline1.btp">
+      <TypeName>ReceivePipeline1</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Pipeline>
+  </ItemGroup>
+  <ItemGroup>
+    <Schema Include="NoNS.xsd">
+      <TypeName>NoNS</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="PropSchema1.xsd">
+      <TypeName>PropSchema1</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="Schema1_NPP.xsd">
+      <TypeName>Schema1_NPP</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="Schema2_WPP.xsd">
+      <TypeName>Schema2_WPP</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="Schema3_FF.xsd">
+      <TypeName>Schema3_FF</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="SimpleBody.xsd">
+      <TypeName>SimpleBody</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="SimpleEnv.xsd">
+      <TypeName>SimpleEnv</TypeName>
+      <Namespace>SampleSchemas</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SampleSchemas.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\BizTalk\BizTalkC.targets" />
+</Project>

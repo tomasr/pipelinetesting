@@ -1,18 +1,21 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Microsoft.XLANGs.BaseTypes;
+using Microsoft.BizTalk.XLANGs.BTXEngine;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Winterdom.BizTalk.PipelineTesting")]
-[assembly: AssemblyDescription("Helper components for unit-testing pipelines and pipeline components")]
+[assembly: AssemblyTitle("SampleSchemas")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Tomas Restrepo")]
-[assembly: AssemblyProduct("Winterdom.BizTalk.PipelineTesting")]
-[assembly: AssemblyCopyright("Copyright © 2008 Tomas Restrepo")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SampleSchemas")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: Microsoft.XLANGs.BaseTypes.BizTalkAssemblyAttribute(typeof(BTXService))]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -20,7 +23,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ed19fc37-7141-4bf2-bbe0-87f70ed5d549")]
+[assembly: Guid("857a91ab-6c2d-4f54-8c2e-dbe1e4178086")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,7 +32,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Revision and Build Numbers 
+// You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.2.1.0")]
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
