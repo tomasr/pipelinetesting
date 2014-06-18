@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Winterdom.BizTalk.PipelineTesting")]
-[assembly: AssemblyDescription("Helper components for unit-testing pipelines and pipeline components")]
+[assembly: AssemblyDescription("BizTalk library for unit-testing pipelines and custom pipeline components")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Tomas Restrepo")]
 [assembly: AssemblyProduct("Winterdom.BizTalk.PipelineTesting")]
