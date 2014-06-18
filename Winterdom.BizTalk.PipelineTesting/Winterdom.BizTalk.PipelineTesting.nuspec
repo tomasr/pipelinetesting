@@ -4,7 +4,6 @@
     <id>$id$</id>
     <version>$version$</version>
     <authors>$author$</authors>
-    <owners>$author$</owners>
     <projectUrl>https://github.com/tomasr/pipelinetesting</projectUrl>
     <description>$description$</description>
     <tags>BizTalk Testing</tags>
