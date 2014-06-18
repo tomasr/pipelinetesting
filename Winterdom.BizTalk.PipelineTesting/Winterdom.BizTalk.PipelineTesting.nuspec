@@ -2,9 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>$id$</id>
-    <version>$version$</version>
+    <!-- Will use hard coded version (instead of $version$) to avoid confusion between AssemblyVersion and AssemblyFileVersion version -->
+    <version>1.2.1.0</version>
     <authors>$author$</authors>
-    <owners>$author$</owners>
     <projectUrl>https://github.com/tomasr/pipelinetesting</projectUrl>
     <description>$description$</description>
     <tags>BizTalk Testing</tags>
