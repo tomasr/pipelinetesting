@@ -25,12 +25,9 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests.Simple {
             .WithAssembler(Assembler.FlatFile())
             .WithEncoder(new MIME_SMIME_Encoder());
 
-         Assert.IsInstanceOfType(typeof(XmlAsmComp), 
-            pipeline.GetComponent(PipelineStage.Assemble, 0));
-         Assert.IsInstanceOfType(typeof(FFAsmComp),
-            pipeline.GetComponent(PipelineStage.Assemble, 1));
-         Assert.IsInstanceOfType(typeof(MIME_SMIME_Encoder),
-            pipeline.GetComponent(PipelineStage.Encode, 0));
+         Assert.IsAssignableFrom<XmlAsmComp>(pipeline.GetComponent(PipelineStage.Assemble, 0));
+         Assert.IsAssignableFrom<FFAsmComp>(pipeline.GetComponent(PipelineStage.Assemble, 1));
+         Assert.IsAssignableFrom<MIME_SMIME_Encoder>(pipeline.GetComponent(PipelineStage.Encode, 0));
       }
 
       [Test]
