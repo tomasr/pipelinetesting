@@ -3,7 +3,7 @@
   <metadata>
     <id>$id$</id>
     <!-- Will use hard coded version (instead of $version$) to avoid confusion between AssemblyVersion and AssemblyFileVersion version -->
-    <version>1.2.1.0</version>
+    <version>1.2.2.0</version>
     <authors>$author$</authors>
     <projectUrl>https://github.com/tomasr/pipelinetesting</projectUrl>
     <description>$description$</description>
