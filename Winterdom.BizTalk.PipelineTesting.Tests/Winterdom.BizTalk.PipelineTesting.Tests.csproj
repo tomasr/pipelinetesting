@@ -89,6 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InstConfigPropertyBagTests.cs" />
+    <Compile Include="ReceiveStageTest.cs" />
+    <Compile Include="SendStageTest.cs" />
     <Compile Include="Simple\AssemblerTests.cs" />
     <Compile Include="Simple\PerInstanceTests.cs" />
     <Compile Include="Simple\SchemaTesterTests.cs" />

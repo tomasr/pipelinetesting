@@ -18,6 +18,7 @@ using NUnit.Framework;
 
 using Winterdom.BizTalk.PipelineTesting;
 using SampleSchemas;
+using System.Collections.Generic;
 
 namespace Winterdom.BizTalk.PipelineTesting.Tests
 {
@@ -278,6 +279,30 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
          MessageCollection outputMessages = pipeline.Execute(inputMessage);
          Assert.IsNotNull(outputMessages);
          Assert.AreEqual(3, outputMessages.Count);
+      }
+
+      /// <summary>
+      /// Tests that when the pipeline stages are executed,
+      /// IPipelineContext.StageID reflects the current
+      /// stage.
+      /// </summary>
+      [Test]
+      public void CanProvideStageIDsInContext()
+      {
+         var pipeline = PipelineFactory.CreateEmptyReceivePipeline();
+         var stages = new List<Guid>();
+         pipeline.AddComponent(new ReceiveStageTest(stages), PipelineStage.Decode);
+         pipeline.AddComponent(new ReceiveStageTest(stages), PipelineStage.Disassemble);
+         pipeline.AddComponent(new ReceiveStageTest(stages), PipelineStage.Validate);
+         pipeline.AddComponent(new ReceiveStageTest(stages), PipelineStage.ResolveParty);
+
+         var inputMessage = MessageHelper.CreateFromString("<sample/>");
+         var outputMessages = pipeline.Execute(inputMessage);
+         Assert.AreEqual(4, stages.Count);
+         Assert.AreEqual(PipelineStage.Decode.ID, stages[0]);
+         Assert.AreEqual(PipelineStage.Disassemble.ID, stages[1]);
+         Assert.AreEqual(PipelineStage.Validate.ID, stages[2]);
+         Assert.AreEqual(PipelineStage.ResolveParty.ID, stages[3]);
       }
 
       #endregion // Execute Tests

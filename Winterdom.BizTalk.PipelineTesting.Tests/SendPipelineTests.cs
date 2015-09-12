@@ -18,6 +18,7 @@ using NUnit.Framework;
 
 using Winterdom.BizTalk.PipelineTesting;
 using SampleSchemas;
+using System.Collections.Generic;
 
 namespace Winterdom.BizTalk.PipelineTesting.Tests
 {
@@ -270,6 +271,30 @@ namespace Winterdom.BizTalk.PipelineTesting.Tests
          }
       }
 
+      /// <summary>
+      /// Tests that when the pipeline stages are executed,
+      /// IPipelineContext.StageID reflects the current
+      /// stage.
+      /// </summary>
+      [Test]
+      public void CanProvideStageIDsInContext()
+      {
+         var pipeline = PipelineFactory.CreateEmptySendPipeline();
+         var stages = new List<Guid>();
+         pipeline.AddComponent(new SendStageTest(stages), PipelineStage.PreAssemble);
+         pipeline.AddComponent(new SendStageTest(stages), PipelineStage.Assemble);
+         pipeline.AddComponent(new SendStageTest(stages), PipelineStage.Encode);
+
+         var inputMessage = MessageHelper.CreateFromString("<sample/>");
+         var collection = new MessageCollection();
+         collection.Add(inputMessage);
+
+         var outputMessage = pipeline.Execute(collection);
+         Assert.AreEqual(3, stages.Count);
+         Assert.AreEqual(PipelineStage.PreAssemble.ID, stages[0]);
+         Assert.AreEqual(PipelineStage.Assemble.ID, stages[1]);
+         Assert.AreEqual(PipelineStage.Encode.ID, stages[2]);
+      }
       #endregion // Execute Tests
 
       #region BTF Assembler Tests

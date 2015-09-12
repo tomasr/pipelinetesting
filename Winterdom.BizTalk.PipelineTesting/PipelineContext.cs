@@ -83,6 +83,7 @@ namespace Winterdom.BizTalk.PipelineTesting
       void SetAuthenticationRequiredOnReceivePort(bool value);
       void SetGroupSigningCertificate(string certificate);
       TransactionControl EnableTransactionSupport();
+      void SetCurrentStage(Guid stageId);
    } // IConfigurePipelineContext
 
    /// <summary>
@@ -320,6 +321,10 @@ namespace Winterdom.BizTalk.PipelineTesting
          return new TransactionControl(tx);
       }
 
+      public void SetCurrentStage(Guid stageId)
+      {
+         _stageId = stageId;
+      }
 
       #endregion // IConfigurePipelineContext Members
 

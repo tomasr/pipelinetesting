@@ -19,6 +19,7 @@ using Microsoft.BizTalk.Component.Interop;
 using Microsoft.XLANGs.BaseTypes;
 using IPipeline = Microsoft.Test.BizTalk.PipelineObjects.IPipeline;
 using PStage = Microsoft.Test.BizTalk.PipelineObjects.Stage;
+using PCallEventArgs = Microsoft.Test.BizTalk.PipelineObjects.CallEventArgs;
 
 
 namespace Winterdom.BizTalk.PipelineTesting
@@ -72,6 +73,7 @@ namespace Winterdom.BizTalk.PipelineTesting
          if ( pipeline == null )
             throw new ArgumentNullException("pipeline");
          _pipeline = pipeline;
+         pipeline.Calling += OnCallingStage;
          _pipelineContext = CreatePipelineContext();
          _isReceivePipeline = isReceivePipeline;
       }
@@ -375,6 +377,26 @@ namespace Winterdom.BizTalk.PipelineTesting
             component.Load(bag, 1);
          }
       }
+
+      /// <summary>
+      /// Fired when a stage is processed or when a component
+      /// is going to be called
+      /// </summary>
+      /// <param name="sender">stage or component called</param>
+      /// <param name="args">stage message</param>
+      private void OnCallingStage(object sender, PCallEventArgs args)
+      {
+         PStage stage = sender as PStage;
+         if ( stage != null )
+         {
+            var configure = _pipelineContext as IConfigurePipelineContext;
+            if ( configure != null )
+            {
+               configure.SetCurrentStage(stage.Id);
+            }
+         }
+      }
+
       #endregion // Private Methods
 
 
